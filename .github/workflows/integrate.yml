@@ -2,8 +2,8 @@ name: Continuous Integration
 
 on:
   pull_request:
-    branches: [ main ]
-
+    types:
+      - [opened, reopened, edited]
 jobs:
   test_pull_request:
     runs-on: ubuntu-latest
