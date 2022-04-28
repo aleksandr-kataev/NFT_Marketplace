@@ -22,7 +22,7 @@ const NavBar: React.FC<NavBarProps> = ({ authorized }) => {
           onClick={() => setMobileMenu(!mobileMenu)}>
           <span className="sr-only">Open menu</span>
           <svg
-            className={`w-6 h-6 ${mobileMenu ? "hidden" : "static"}`}
+            className={`w-6 h-6 ${mobileMenu && "hidden"}`}
             fill="white"
             viewBox="0 0 20 20"
             xmlns="http://www.w3.org/2000/svg">
@@ -32,7 +32,7 @@ const NavBar: React.FC<NavBarProps> = ({ authorized }) => {
               clipRule="evenodd"></path>
           </svg>
           <svg
-            className={`w-6 h-6 ${mobileMenu ? "static" : "hidden"}`}
+            className={`w-6 h-6 ${!mobileMenu && "hidden"}`}
             fill="white"
             viewBox="0 0 20 20"
             xmlns="http://www.w3.org/2000/svg">
@@ -42,17 +42,14 @@ const NavBar: React.FC<NavBarProps> = ({ authorized }) => {
               clipRule="evenodd"></path>
           </svg>
         </button>
-        <div
-          className={`${
-            mobileMenu ? "static" : "hidden"
-          } w-full md:block md:w-auto`}>
-          <ul className="flex flex-col mt-5 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium">
+        <div className={`${!mobileMenu && "hidden"} w-full md:block md:w-auto`}>
+          <ul className="flex flex-col mt-5 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:mr-8">
             {authorized ? (
               <>
                 <li>
                   <a
                     href="#"
-                    className="block py-3 pr-4 pl-3 text-white rounded md:bg-transparent md:p-0 md:mr-6"
+                    className="block py-3 pr-4 pl-3 text-white rounded md:bg-transparent md:p-0"
                     aria-current="page">
                     Explore
                   </a>
@@ -60,8 +57,15 @@ const NavBar: React.FC<NavBarProps> = ({ authorized }) => {
                 <li>
                   <a
                     href="#"
-                    className="block py-3 pr-4 pl-3 text-white rounded md:bg-transparent md:p-0">
-                    Unlink Wallet
+                    className="block py-3 pr-4 pl-3 text-white rounded md:bg-transparent md:p-0 md:ml-4">
+                    Account
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    className="block py-3 pr-4 pl-3 text-white rounded md:bg-transparent md:p-0 md:ml-4">
+                    Logout
                   </a>
                 </li>
               </>
@@ -70,7 +74,7 @@ const NavBar: React.FC<NavBarProps> = ({ authorized }) => {
                 <li>
                   <a
                     href="#"
-                    className="block py-3 pr-4 pl-3 text-white rounded md:bg-transparent md:p-0 md:mr-6"
+                    className="block py-3 pr-4 pl-3 text-white rounded md:bg-transparent md:p-0 md:ml-4"
                     aria-current="page">
                     Explore
                   </a>
@@ -78,7 +82,7 @@ const NavBar: React.FC<NavBarProps> = ({ authorized }) => {
                 <li>
                   <a
                     href="#"
-                    className="block py-3 pr-4 pl-3 text-white rounded md:bg-transparent md:p-0">
+                    className="block py-3 pr-4 pl-3 text-white rounded md:bg-transparent md:p-0 md:ml-4">
                     Connect Wallet
                   </a>
                 </li>
